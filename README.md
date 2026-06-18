@@ -21,11 +21,22 @@
 
 ## 🛠 STEP 1. 클러스터 구축
 
-클러스터는 총 3대의 Jetson Orin Nano 보드로 구성됩니다.
-- **Master Node**: 1대
-- **Worker Node**: 2대
-
 ### 1-1. 보드 및 스위치 세팅
+
+<p align="center">
+  <img
+    width="600"
+    alt="Jetson cluster"
+    src="https://github.com/user-attachments/assets/70bc655e-c149-43dc-99c4-261053dc6058"
+  />
+</p>
+
+총 3대의 Jetson Orin Nano 보드와 스위치를 사용해 클러스터의 물리적 연결을 구성합니다.
+
+- [ ] 스위치와 라우터를 LAN 케이블로 연결
+- [ ] 스위치와 3대의 Jetson Orin Nano 보드를 LAN 케이블로 연결
+- [ ] 스위치 전원 케이블 연결
+- [ ] 각 Jetson Orin Nano 보드 전원 케이블 연결
 
 <br>
 
