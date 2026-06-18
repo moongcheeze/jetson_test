@@ -68,18 +68,9 @@ ssh <username>@192.168.176.47 -p 2222
 
 ### 1-3. 기본 환경 설정
 
-Jetson 보드는 기본적으로 GUI 모드로 실행됩니다.  
-하지만 서버 용도로 사용할 경우 그래픽 데스크톱 환경은 불필요한 자원을 사용할 수 있습니다.
+### 1-3. 기본 환경 설정
 
-따라서 기본 부팅 모드를 text mode로 변경하여, 부팅 시 GUI 환경이 아닌 CLI 환경으로 실행되도록 설정합니다.
-
-```bash
-sudo systemctl set-default multi-user.target
-```
-
-추후 GUI 환경이 필요한 경우, 기본 부팅 모드를 다시 `graphical.target`으로 변경할 수 있습니다.
-
----
+#### GUI 비활성화
 
 Jetson 보드는 기본적으로 GUI 모드로 실행됩니다.  
 하지만 서버 용도로 사용할 경우 그래픽 데스크톱 환경은 불필요한 자원을 사용할 수 있습니다.
@@ -91,6 +82,26 @@ sudo systemctl set-default multi-user.target
 ```
 
 추후 GUI 환경이 필요한 경우, 기본 부팅 모드를 다시 `graphical.target`으로 변경할 수 있습니다.
+
+
+#### 전력 모드 설정
+
+다음 명령어를 통해 Jetson 보드를 최대 성능 모드로 설정합니다.
+
+```bash
+sudo nvpmodel -m 0
+```
+
+#### Swap 비활성화
+
+쿠버네티스는 예측 가능한 자원 관리를 위해 swap memory가 비활성화된 환경을 권장합니다.  
+swap이 활성화되어 있으면 컨테이너 자원 관리 과정에서 예상하지 못한 동작이 발생할 수 있습니다.
+
+다음 명령어를 통해 swap memory를 비활성화합니다.
+
+```bash
+sudo swapoff -a
+```
 
 
 <br>
