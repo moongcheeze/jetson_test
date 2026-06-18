@@ -33,10 +33,10 @@
 
 클러스터는 총 3대의 Jetson Orin Nano 보드로 구성했으며, 각 보드는 스위치를 통해 동일한 네트워크에 연결됩니다.
 
-- 스위치와 라우터를 LAN 케이블로 연결
-- 스위치와 3대의 Jetson Orin Nano 보드를 LAN 케이블로 연결
-- 스위치 전원 케이블 연결
-- 각 Jetson Orin Nano 보드 전원 케이블 연결
+> 스위치와 라우터를 LAN 케이블로 연결  
+> 스위치와 3대의 Jetson Orin Nano 보드를 LAN 케이블로 연결  
+> 스위치 전원 케이블 연결  
+> 각 Jetson Orin Nano 보드 전원 케이블 연결
 
 <br>
 
