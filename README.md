@@ -78,8 +78,8 @@ sudo systemctl set-default multi-user.target
 ```
 
 추후 GUI 환경이 필요한 경우, 기본 부팅 모드를 다시 `graphical.target`으로 변경할 수 있습니다.
-***
 
+---
 
 Jetson 보드는 기본적으로 GUI 모드로 실행됩니다.  
 하지만 서버 용도로 사용할 경우 그래픽 데스크톱 환경은 불필요한 자원을 사용할 수 있습니다.
