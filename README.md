@@ -51,13 +51,13 @@ Master Node  : 192.168.0.24  / SSH Port 2222
 Worker Node 1: 192.168.0.25  / SSH Port 2223
 Worker Node 2: 192.168.0.26  / SSH Port 2224
 ```
-
+<br>
 학교 네트워크 서버에 접속한 뒤, 다음 명령어로 각 노드에 SSH 접속할 수 있습니다.
 
 ```bash
 ssh <username>@192.168.176.47 -p <port>
 ```
-
+<br>
 예를 들어 Master Node에 접속하려면 다음 명령어를 실행합니다.
 
 ```bash
