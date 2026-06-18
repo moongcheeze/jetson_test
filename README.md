@@ -58,7 +58,7 @@
   ssh <username>@192.168.176.47 -p <port>
   ```
 
-- 예를 들어 Master Node에 접속하려면 다음 명령어를 실행합니다.
+- 예를 들어, Master Node에 접속하려면 다음 명령어를 실행합니다.
 
   ```bash
   ssh <username>@192.168.176.47 -p 2222
