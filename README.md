@@ -43,14 +43,14 @@
 ### 1-2. 내부 IP 및 SSH 접속 설정
 
 - SSH 접속을 위해 공유기 관리 페이지에서 각 Jetson Orin Nano 보드의 내부 IP와 포트를 설정합니다.
-
-```text
-공유기 IP: 192.168.176.47
-
-Master Node  : 192.168.0.24  / SSH Port 2222
-Worker Node 1: 192.168.0.25  / SSH Port 2223
-Worker Node 2: 192.168.0.26  / SSH Port 2224
-```
+  
+  ```text
+  공유기 IP: 192.168.176.47
+  
+  Master Node  : 192.168.0.24  / SSH Port 2222
+  Worker Node 1: 192.168.0.25  / SSH Port 2223
+  Worker Node 2: 192.168.0.26  / SSH Port 2224
+  ```
 <br>
 
 - 학교 네트워크 서버에 접속한 뒤, 다음 명령어로 각 노드에 SSH 접속할 수 있습니다.
