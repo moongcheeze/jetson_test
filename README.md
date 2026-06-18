@@ -15,16 +15,17 @@
 마지막으로 구성한 클러스터 위에서 예제(SCALE-Sim v3 이용)를 실행하는 방법을 설명합니다.
 </p>
 
-<p>
-클러스터는 총 3대의 Jetson Orin Nano 보드로 구성됩니다.<br>
-<b>Master Node</b>: 1대<br>
-<b>Worker Node</b>: 2대
-</p>
 
 </div>
 
 
 ## 🛠 STEP 1. 클러스터 구축
+
+<p>
+클러스터는 총 3대의 Jetson Orin Nano 보드로 구성됩니다.<br>
+<b>Master Node</b>: 1대<br>
+<b>Worker Node</b>: 2대
+</p>
 
 ## 🛠 STEP 2. 로컬 레지스트리 생성
 
