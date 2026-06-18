@@ -33,10 +33,10 @@
 
 총 3대의 Jetson Orin Nano 보드와 스위치를 사용해 클러스터의 물리적 연결을 구성합니다.
 
-- [ ] 스위치와 라우터를 LAN 케이블로 연결
-- [ ] 스위치와 3대의 Jetson Orin Nano 보드를 LAN 케이블로 연결
-- [ ] 스위치 전원 케이블 연결
-- [ ] 각 Jetson Orin Nano 보드 전원 케이블 연결
+- 스위치와 라우터를 LAN 케이블로 연결
+- 스위치와 3대의 Jetson Orin Nano 보드를 LAN 케이블로 연결
+- 스위치 전원 케이블 연결
+- 각 Jetson Orin Nano 보드 전원 케이블 연결
 
 <br>
 
