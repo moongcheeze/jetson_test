@@ -37,22 +37,25 @@
 > 스위치 전원 케이블 연결  
 > 각 Jetson Orin Nano 보드 전원 케이블 연결 
 
+<br>
+### 1-2. 내부 IP 및 SSH 접속 설정
+
 ### 1-2. 내부 IP 및 SSH 접속 설정
 
 SSH 접속을 위해 공유기 관리 페이지에서 각 Jetson Orin Nano 보드의 내부 IP와 포트를 설정합니다.
 
 ```text
-접속 대상 IP: 192.168.176.47
+공유기 IP: 192.168.176.47
 
-Master Node  : 192.168.0.24  / Port 2222
-Worker Node 1: 192.168.0.25  / Port 2223
-Worker Node 2: 192.168.0.26  / Port 2224
+Master Node  : 192.168.0.24  / SSH Port 2222
+Worker Node 1: 192.168.0.25  / SSH Port 2223
+Worker Node 2: 192.168.0.26  / SSH Port 2224
 ```
 
-설정 이후, 학교 네트워크의 서버에 접속한 뒤 다음 형식으로 각 노드에 SSH 접속합니다.
+학교 네트워크 서버에 접속한 뒤, 다음 커맨드로 각 노드에 SSH 접속할 수 있습니다.
 
 ```bash
-ssh <username>@<접속 대상 IP> -p <port>
+ssh <username>@192.168.176.47 -p <ssh-port>
 ```
 
 예를 들어 Master Node에 접속하려면 다음 명령어를 실행합니다.
@@ -60,6 +63,7 @@ ssh <username>@<접속 대상 IP> -p <port>
 ```bash
 ssh <username>@192.168.176.47 -p 2222
 ```
+<br>
 
 ### 1-3. 기본 설정 세팅
 
