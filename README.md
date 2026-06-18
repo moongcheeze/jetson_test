@@ -1,5 +1,14 @@
 # 쿠버네티스 기반 Jetson 클러스터 구축 및 실행 가이드
 
+<p align="center">
+  <img width="800" alt="Jetson cluster architecture" src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef" />
+</p>
+
+<p align="center">
+  <em>Jetson Orin Nano 기반 Kubernetes 클러스터 구성</em>
+</p>
+
+
 ## 개요
 
 본 레포지토리는 Jetson Orin Nano 보드를 이용해 쿠버네티스 클러스터를 구성하고, Local Registry와 NFS를 설정한 뒤 예제 Pod를 실행하는 과정을 정리한 가이드입니다.
@@ -8,7 +17,3 @@
 
 - Master Node: 1대
 - Worker Node: 2대
-
-<p align="center">
-  <img width="800" alt="Jetson cluster architecture" src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef" />
-</p>
