@@ -4,6 +4,7 @@
 
 <img width="600" alt="Jetson cluster architecture" src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef" />
 
+<br>
 
 <p>
 본 레포지토리는 Jetson Orin Nano 보드를 이용해 쿠버네티스 클러스터를 구성하고,<br>
