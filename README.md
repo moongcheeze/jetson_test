@@ -1,11 +1,7 @@
 # 쿠버네티스 기반 Jetson 클러스터 구축 및 실행 가이드
 
 <p align="center">
-  <img width="800" alt="Jetson cluster architecture" src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef" />
-</p>
-
-<p align="center">
-  <em>Jetson Orin Nano 기반 Kubernetes 클러스터 구성</em>
+  <img width="600" alt="Jetson cluster architecture" src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef" />
 </p>
 
 
