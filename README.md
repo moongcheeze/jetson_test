@@ -55,16 +55,16 @@
 
 - 학교 네트워크 서버에 접속한 뒤, 다음 명령어로 각 노드에 SSH 접속할 수 있습니다.
 
-```bash
-ssh <username>@192.168.176.47 -p <port>
-```
+  ```bash
+  ssh <username>@192.168.176.47 -p <port>
+  ```
 <br>
 
 - 예를 들어 Master Node에 접속하려면 다음 명령어를 실행합니다.
 
-```bash
-ssh <username>@192.168.176.47 -p 2222
-```
+  ```bash
+  ssh <username>@192.168.176.47 -p 2222
+  ```
 
 <br>
 
@@ -75,19 +75,19 @@ ssh <username>@192.168.176.47 -p 2222
   하지만 서버 용도로 사용할 경우 그래픽 데스크톱 환경은 불필요한 자원을 사용할 수 있습니다.  
 - 따라서 기본 부팅 모드를 text mode로 변경하여, 부팅 시 GUI 환경이 아닌 CLI 환경으로 실행되도록 설정합니다.  
 (추후 GUI 환경이 필요한 경우, 기본 부팅 모드를 다시 `graphical.target`으로 변경할 수 있습니다.)
-
-```bash
-sudo systemctl set-default multi-user.target
-```
+  
+  ```bash
+  sudo systemctl set-default multi-user.target
+  ```
 
 
 <br>
 
 - 다음 명령어를 통해 Jetson 보드를 최대 성능 모드로 설정합니다.
 
-```bash
-sudo nvpmodel -m 0
-```
+  ```bash
+  sudo nvpmodel -m 0
+  ```
 
 <br>
 
@@ -95,9 +95,9 @@ sudo nvpmodel -m 0
   swap이 활성화되어 있으면 컨테이너 자원 관리 과정에서 예상하지 못한 동작이 발생할 수 있습니다.  
 - 다음 명령어를 통해 swap memory를 비활성화합니다.
 
-```bash
-sudo swapoff -a
-```
+  ```bash
+  sudo swapoff -a
+  ```
 
 
 <br>
