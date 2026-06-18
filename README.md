@@ -38,7 +38,7 @@
 > 각 Jetson Orin Nano 보드 전원 케이블 연결 
 
 <br>
-### 1-2. 내부 IP 및 SSH 접속 설정
+
 
 ### 1-2. 내부 IP 및 SSH 접속 설정
 
@@ -63,6 +63,7 @@ ssh <username>@192.168.176.47 -p <port>
 ```bash
 ssh <username>@192.168.176.47 -p 2222
 ```
+
 <br>
 
 ### 1-3. 기본 설정 세팅
