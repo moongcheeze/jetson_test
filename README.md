@@ -275,7 +275,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   
   ```text
   NAME     STATUS   ROLES           AGE    VERSION
-  master   Ready    control-plane    179m   v1.34.3+k3s1
+  master   Ready    control-plane   179m   v1.34.3+k3s1
   ```
 
 
