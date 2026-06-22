@@ -158,7 +158,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
 <br>
 
-### (4)  고정 IP 주소 설정
+### (4) 고정 IP 주소 설정
 - **(Optional)** 쿠버네티스 클러스터 운영 시 재부팅 후에도 동일한 주소로 각 노드에 접근할 수 있도록, Jetson 보드에 고정 IP 주소를 할당해주는 과정입니다.
 - 고정 IP 주소를 설정하기 위해 Netplan을 설치합니다. Netplan은 YAML 파일을 사용해 Ubuntu의 네트워크 설정을 정의하는 도구입니다.
 
@@ -241,7 +241,42 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
 <br>
 
-### (5)  쿠버네티스 설치
+### (5) 쿠버네티스 설치
+
+- k3s는 Jetson 보드와 같이 자원이 제한된 환경에서 사용하기 적합한 경량 쿠버네티스 배포판입니다.  
+  하나의 Jetson 보드는 **마스터 노드(k3s server)**로, 나머지 보드들은 **워커 노드(k3s agent)**로 설정합니다.
+  
+<p align="center">
+  <img
+    width="600"
+    alt="k3s cluster overview"
+    src="https://github.com/user-attachments/assets/d5d7b970-f5bc-441f-bf54-2bf13f3a439a"
+  />
+</p>
+
+- 마스터 노드로 사용할 보드의 IP 주소를 확인한 뒤, 아래 k3s 설치 명령어를 실행합니다.  
+  `--advertise-address`도 마스터 노드의 IP 주소를 그대로 입력합니다.
+
+  ```bash
+  curl -sfL https://get.k3s.io | sh -s - \
+    --docker \
+    --node-name master \
+    --node-ip 192.168.0.24 \
+    --advertise-address 192.168.0.24
+  ```
+
+설치가 완료되면 마스터 노드가 클러스터에 등록되었는지 확인합니다.
+
+```bash
+sudo k3s kubectl get nodes
+```
+
+실행 결과 예시는 다음과 같습니다.
+
+```text
+NAME     STATUS   ROLES           AGE    VERSION
+master   Ready    control-plane    179m   v1.34.3+k3s1
+```
 
 
 
