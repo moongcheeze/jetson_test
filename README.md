@@ -289,8 +289,8 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   sudo cat /var/lib/rancher/k3s/server/node-token
   ```
 
-- **(Workers)** 워커 노드에서 k3s 설치 명령어를 실행합니다.
-  Worker 노드는 Master 노드의 IP 주소와 node token을 사용하여 클러스터에 연결합니다.
+- **(Workers)** 워커 노드에서 k3s 설치 명령어를 실행합니다.  
+  Worker 노드는 Master 노드의 IP 주소와 node token을 사용하여 클러스터에 연결합니다.  
   먼저 Worker 노드에서 Master 노드의 IP 주소를 입력받습니다.  
   `Master node IP:`가 나오면 Master 노드의 IP 주소를 입력합니다.
   ```bash
@@ -303,7 +303,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   read -p "Node token: " YOUR_NODE_TOKEN
   ```
 
-  그다음 아래 명령어를 실행하여 k3s agent를 설치합니다.
+  그다음 아래 명령어를 실행하여 k3s agent를 설치합니다.  
   Worker 노드마다 `--node-name` 값을 다르게 설정합니다.
   ```bash
   curl -sfL https://get.k3s.io | \
