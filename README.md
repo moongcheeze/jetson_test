@@ -129,6 +129,31 @@
   Default Runtime: nvidia
   ```
 
+- Docker 명령어를 실행할 때마다 `sudo`를 사용하지 않도록, 현재 사용자를 `docker` group에 추가합니다.
+
+  ```bash
+  # Create the docker group
+  sudo groupadd docker
+
+  # Add the current user to the docker group
+  sudo usermod -aG docker $USER
+
+  # Start a new session with the updated group
+  newgrp docker
+  ```
+
+- 패키지 목록을 최신 상태로 업데이트하고, 설치된 패키지를 최신 버전으로 업그레이드합니다.
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get dist-upgrade
+  ```
+
+- 시스템 업데이트 이후에는 재부팅을 권장합니다.
+
+  ```bash
+  sudo reboot
+  ```
 
 
 
