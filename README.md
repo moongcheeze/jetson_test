@@ -352,6 +352,27 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   kubectl get nodes
   ```
 
+- **(Master)** k3s에서는 별도 설정이 없으면 여러 개의 Pod가 생성될 때 Master 노드에도 Pod가 스케줄링될 수 있습니다.  
+  본 실험 환경에서는 Master 노드를 클러스터 관리 용도로만 사용하고, 실제 Pod는 Worker 노드에서만 실행되도록 설정합니다.  
+  Master 노드에서 아래 명령어를 실행하여 Master 노드에 `NoSchedule` taint를 추가합니다.
+
+  ```bash
+  kubectl taint nodes master node-role.kubernetes.io/control-plane=:NoSchedule
+  ```
+
+  taint가 정상적으로 추가되었는지 확인합니다.
+
+  ```bash
+  kubectl describe node master | grep Taints
+  ```
+  
+  출력 예시는 다음과 같습니다.
+  
+  ```text
+  Taints: node-role.kubernetes.io/control-plane:NoSchedule
+  ```
+
+
 <br>
 <br>
 
