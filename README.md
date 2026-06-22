@@ -235,6 +235,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
   ```text
   default via 192.168.0.1 (static)
+  192.168.0.0/24 from 192.168.0.24 (link)
   ```
 
 
