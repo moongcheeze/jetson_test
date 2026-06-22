@@ -99,7 +99,7 @@
   sudo vi /etc/docker/daemon.json
   ```
 
-  `daemon.json` 파일에 다음 내용을 추가합니다.
+  `daemon.json` 파일을 다음과 같이 수정합니다.
   
   ```json
   {
