@@ -331,7 +331,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   worker-2   Ready    worker          94m     v1.34.3+k3s1
   ```
 - **(Optional/Master)** 기본적으로 k3s에서는 클러스터에 접근할 때 `sudo k3s kubectl` 명령어를 사용합니다.  
-  실습 편의를 위해 kubeconfig 파일 권한을 변경하고, `KUBECONFIG` 환경 변수를 설정하면 `kubectl` 명령어를 바로 사용할 수 있습니다.
+  kubeconfig 권한과 환경 변수를 설정하면 `kubectl`을 바로 사용할 수 있습니다.
   ```bash
   sudo chmod -R 777 /etc/rancher/k3s/k3s.yaml
   ```
