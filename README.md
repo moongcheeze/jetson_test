@@ -156,10 +156,55 @@
   ```
 
 
-
 <br>
 
 ### (4)  고정 IP 주소 설정
+- (Optional) 쿠버네티스 클러스터 운영 시 재부팅 후에도 동일한 주소로 각 노드에 접근할 수 있도록, Jetson 보드에 고정 IP 주소를 할당해주는 과정입니다.
+- 고정 IP 주소를 설정하기 위해 Netplan을 설치합니다. Netplan은 YAML 파일을 사용해 Ubuntu의 네트워크 설정을 정의하는 도구입니다.
+
+  ```bash
+  sudo apt install netplan.io
+  ```
+
+- 고정 IP 주소를 설정하기 전에 현재 네트워크 정보를 확인합니다.  
+  해당 정보는 이후 Netplan YAML 설정 파일을 작성할 때 필요합니다.
+
+  ```bash
+  # Check the current IP address
+  ifconfig
+
+  # Check the default gateway
+  route -n
+
+  # Check the DNS nameserver
+  cat /etc/resolv.conf
+  ```  
+
+- Netplan 설정 파일을 수정하여 DHCP를 비활성화하고 고정 IP 주소를 할당합니다.  
+  IP 주소, gateway, DNS nameserver 정보는 사용자의 네트워크 환경에 맞게 변경합니다.
+
+  ```bash
+  sudo vi /etc/netplan/config.yaml
+  ```
+
+  ```yaml
+  network:
+    version: 2
+    renderer: networkd
+    ethernets:
+      eno1:
+        dhcp4: no
+        addresses:
+          - 192.168.0.24/24   # Static IP address with subnet prefix
+        routes:
+          - to: default
+            via: 192.168.0.1   # Default gateway address
+        nameservers:
+          addresses:
+            - 127.0.0.53   # Local DNS resolver
+            - 8.8.8.8
+  ```
+
 
 <br>
 
