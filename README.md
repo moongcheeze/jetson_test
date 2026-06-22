@@ -90,7 +90,7 @@
   sudo swapoff -a
   ```
 
-- Docker 컨테이너에서 GPU를 기본적으로 사용할 수 있도록 NVIDIA runtime을 기본 Docker runtime으로 설정합니다.
+- Docker 컨테이너에서 GPU를 기본적으로 사용할 수 있도록 NVIDIA runtime을 기본 Docker runtime으로 설정합니다.  
   Docker 설정 파일에 `"default-runtime": "nvidia"` 코드를 추가해줍니다.
 
   ```bash
