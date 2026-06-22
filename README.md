@@ -281,11 +281,54 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   master   Ready    control-plane   179m   v1.34.3+k3s1
   ```
 
-- **(Master)** 
+- **(Master)** Worker 노드를 클러스터에 연결하기 위해 Master 노드에서 node token을 확인합니다.
+  해당 token은 이후 Worker 노드에서 k3s agent를 설치할 때 사용됩니다.
 
+```bash
+sudo cat /var/lib/rancher/k3s/server/node-token
+```
 
-- **(Workers)** 
+- **(Workers)** 워커 노드에서 k3s 설치 명령어를 실행합니다.
+  Worker 노드는 Master 노드의 IP 주소와 node token을 사용하여 클러스터에 연결합니다.
+  먼저 Worker 노드에서 Master 노드의 IP 주소를 입력받습니다.  
+  `Master node IP:`가 나오면 Master 노드의 IP 주소를 입력합니다.
+  ```bash
+  read -p "Master node IP: " YOUR_SERVER_NODE_IP
+  ```
 
+  다음으로 node token을 입력받습니다.  
+  `Node token:`이 나오면 앞에서 확인한 Master 노드의 token을 입력합니다.
+  ```bash
+  read -p "Node token: " YOUR_NODE_TOKEN
+  ```
+
+  그다음 아래 명령어를 실행하여 k3s agent를 설치합니다.
+  Worker 노드마다 `--node-name` 값을 다르게 설정합니다.
+  ```bash
+  curl -sfL https://get.k3s.io | \
+    K3S_URL=https://${YOUR_SERVER_NODE_IP}:6443 \
+    K3S_TOKEN=${YOUR_NODE_TOKEN} sh -s - \
+    --docker \
+    --node-name worker-1
+  ```
+
+- **(Master)** Worker 노드에 역할(label)을 추가합니다.
+  ```bash
+  sudo k3s kubectl label node worker-1 worker-2 node-role.kubernetes.io/worker=worker
+  ```
+  
+  전체 노드 상태를 확인합니다.
+
+  ```bash
+  sudo k3s kubectl get nodes
+  ```
+  
+  ```text
+  NAME       STATUS   ROLES           AGE     VERSION
+  master     Ready    control-plane    4h34m   v1.34.3+k3s1
+  worker-1   Ready    worker           103m    v1.34.3+k3s1
+  worker-2   Ready    worker           94m     v1.34.3+k3s1
+  ```
 
 <br>
 <br>
