@@ -271,7 +271,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   sudo k3s kubectl get nodes
   ```
   
-  실행 결과 예시는 다음과 같습니다.
+  다음과 같이 마스터 노드가 등록되면 성공입니다.
   
   ```text
   NAME     STATUS   ROLES           AGE    VERSION
