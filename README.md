@@ -91,9 +91,7 @@
   ```
 
 - Docker 컨테이너에서 GPU를 기본적으로 사용할 수 있도록 NVIDIA runtime을 기본 Docker runtime으로 설정합니다.
-
-  기본적으로 Docker는 컨테이너 실행 시 NVIDIA runtime을 자동으로 사용하지 않습니다.  
-  따라서 추가 옵션 없이 컨테이너에서 GPU를 사용할 수 있도록 Docker 설정 파일에 `"default-runtime": "nvidia"` 항목을 추가합니다.
+  Docker 설정 파일에 `"default-runtime": "nvidia"` 코드를 추가해줍니다.
 
   ```bash
   sudo vi /etc/docker/daemon.json
