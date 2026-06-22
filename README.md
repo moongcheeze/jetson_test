@@ -101,17 +101,17 @@
 
   `daemon.json` 파일에 다음 내용을 추가합니다.
 
-```diff
-{
-+ "default-runtime": "nvidia",
-  "runtimes": {
-    "nvidia": {
-      "args": [],
-      "path": "nvidia-container-runtime"
+  ```diff
+  {
+  + "default-runtime": "nvidia",
+    "runtimes": {
+      "nvidia": {
+        "args": [],
+        "path": "nvidia-container-runtime"
+      }
     }
   }
-}
-```
+  ```
 
   설정을 적용하기 위해 Docker를 재시작합니다.
 
