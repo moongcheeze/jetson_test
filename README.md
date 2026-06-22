@@ -282,7 +282,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   master   Ready    control-plane   179m   v1.34.3+k3s1
   ```
 
-- **(Master)** 워커 노드를 클러스터에 연결하기 위해 마스터 노드에서 node token을 확인합니다.  
+  워커 노드를 클러스터에 연결하기 위해 마스터 노드에서 node token을 확인합니다.  
   해당 token은 이후 워커 노드에서 k3s agent를 설치할 때 사용됩니다.
   
   ```bash
