@@ -100,10 +100,10 @@
   ```
 
   `daemon.json` 파일에 다음 내용을 추가합니다.
-  
+
   <pre>
   {
-    <mark>"default-runtime": "nvidia",</mark>
+    <span style="color:#f0506e;">"default-runtime": "nvidia",</span>
     "runtimes": {
       "nvidia": {
         "args": [],
