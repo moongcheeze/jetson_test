@@ -218,7 +218,7 @@
   sudo netplan apply
   ```
 
-- Jetson Orin Nano 보드에서는 다음과 같은 `ovsdb-server.service` 경고가 출력될 수 있습니다.
+- Jetson Orin Nano 보드에서는 다음과 같은 `ovsdb-server.service` 경고가 출력될 수 있습니다.  
   해당 경고는 실험 환경에 영향을 주지 않으므로 무시해도 됩니다.
 
   ```text
