@@ -100,18 +100,16 @@
   ```
 
   `daemon.json` 파일에 다음 내용을 추가합니다.
-
-  <pre>
-  {
-    <span style="color:#f0506e;">"default-runtime": "nvidia",</span>
-    "runtimes": {
-      "nvidia": {
-        "args": [],
-        "path": "nvidia-container-runtime"
-      }
-    }
-  }
-  </pre>
+  
+> `{`  
+> &nbsp;&nbsp;${\textsf{\color{green}"default-runtime":\ "nvidia",}}$  
+> &nbsp;&nbsp;`"runtimes": {`  
+> &nbsp;&nbsp;&nbsp;&nbsp;`"nvidia": {`  
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`"args": [],`  
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`"path": "nvidia-container-runtime"`  
+> &nbsp;&nbsp;&nbsp;&nbsp;`}`  
+> &nbsp;&nbsp;`}`  
+> `}`
 
   설정을 적용하기 위해 Docker를 재시작합니다.
 
