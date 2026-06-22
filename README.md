@@ -244,7 +244,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 ### (5) 쿠버네티스 설치
 
 - k3s는 Jetson 보드와 같이 자원이 제한된 환경에서 사용하기 적합한 경량 쿠버네티스 배포판입니다.  
-  하나의 Jetson 보드는 **마스터 노드(k3s server)**로, 나머지 보드들은 **워커 노드(k3s agent)**로 설정합니다.
+  하나의 Jetson 보드는 마스터 노드(k3s server)로, 나머지 보드들은 워커 노드(k3s agent)로 설정합니다.
   
 <p align="center">
   <img
@@ -265,18 +265,18 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
     --advertise-address 192.168.0.24
   ```
 
-설치가 완료되면 마스터 노드가 클러스터에 등록되었는지 확인합니다.
-
-```bash
-sudo k3s kubectl get nodes
-```
-
-실행 결과 예시는 다음과 같습니다.
-
-```text
-NAME     STATUS   ROLES           AGE    VERSION
-master   Ready    control-plane    179m   v1.34.3+k3s1
-```
+  설치가 완료되면 마스터 노드가 클러스터에 등록되었는지 확인합니다.
+  
+  ```bash
+  sudo k3s kubectl get nodes
+  ```
+  
+  실행 결과 예시는 다음과 같습니다.
+  
+  ```text
+  NAME     STATUS   ROLES           AGE    VERSION
+  master   Ready    control-plane    179m   v1.34.3+k3s1
+  ```
 
 
 
