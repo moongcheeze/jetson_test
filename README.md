@@ -225,6 +225,18 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   WARNING:root:Cannot call Open vSwitch: ovsdb-server.service is not running.
   ```
 
+- 다음 명령어를 사용하여 고정 IP 설정이 정상적으로 적용되었는지 확인합니다.
+
+  ```bash
+  netplan status eno1
+  ```
+  
+- `Routes` 항목에서 default gateway가 `static`으로 표시되면 성공입니다.
+
+  ```text
+  default via 192.168.0.1 (static)
+  ```
+
 
 <br>
 
