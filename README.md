@@ -101,9 +101,9 @@
 
   `daemon.json` 파일에 다음 내용을 추가합니다.
   
-  ```diff
+  ```json
   {
-  + "default-runtime": "nvidia",
+    "default-runtime": "nvidia",
     "runtimes": {
       "nvidia": {
         "args": [],
