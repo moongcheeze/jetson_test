@@ -159,7 +159,7 @@
 <br>
 
 ### (4)  고정 IP 주소 설정
-- (Optional) 쿠버네티스 클러스터 운영 시 재부팅 후에도 동일한 주소로 각 노드에 접근할 수 있도록, Jetson 보드에 고정 IP 주소를 할당해주는 과정입니다.
+- **(Optional)** 쿠버네티스 클러스터 운영 시 재부팅 후에도 동일한 주소로 각 노드에 접근할 수 있도록, Jetson 보드에 고정 IP 주소를 할당해주는 과정입니다.
 - 고정 IP 주소를 설정하기 위해 Netplan을 설치합니다. Netplan은 YAML 파일을 사용해 Ubuntu의 네트워크 설정을 정의하는 도구입니다.
 
   ```bash
@@ -204,6 +204,27 @@
             - 127.0.0.53   # Local DNS resolver
             - 8.8.8.8
   ```
+
+- Netplan 설정 파일은 `root`가 소유해야 하며, 제한된 권한을 가져야 합니다.
+
+  ```bash
+  sudo chmod 600 /etc/netplan/config.yaml
+  sudo chown root:root /etc/netplan/config.yaml
+  ```
+
+- 권한 수정 후 Netplan 설정을 적용합니다.
+
+  ```bash
+  sudo netplan apply
+  ```
+
+- Jetson Orin Nano 보드에서는 다음과 같은 `ovsdb-server.service` warning이 출력될 수 있습니다.
+
+  ```text
+  WARNING:root:Cannot call Open vSwitch: ovsdb-server.service is not running.
+  ```
+
+  이 warning은 실험 환경에 영향을 주지 않으므로 무시해도 됩니다.
 
 
 <br>
