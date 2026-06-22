@@ -162,7 +162,8 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 > 아래 과정은 모든 Jetson 보드에서 동일하게 수행됩니다.
 
 - **(Optional)** 쿠버네티스 클러스터 운영 시 재부팅 후에도 동일한 주소로 각 노드에 접근할 수 있도록, Jetson 보드에 고정 IP 주소를 할당해주는 과정입니다.
-- 고정 IP 주소를 설정하기 위해 Netplan을 설치합니다. Netplan은 YAML 파일을 사용해 Ubuntu의 네트워크 설정을 정의하는 도구입니다.
+- 고정 IP 주소를 설정하기 위해 Netplan을 설치합니다.  
+  Netplan은 YAML 파일을 사용해 Ubuntu의 네트워크 설정을 정의하는 도구입니다.
 
   ```bash
   sudo apt install netplan.io
@@ -281,7 +282,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   master   Ready    control-plane   179m   v1.34.3+k3s1
   ```
 
-- **(Master)** Worker 노드를 클러스터에 연결하기 위해 Master 노드에서 node token을 확인합니다.
+- **(Master)** Worker 노드를 클러스터에 연결하기 위해 Master 노드에서 node token을 확인합니다.  
   해당 token은 이후 Worker 노드에서 k3s agent를 설치할 때 사용됩니다.
   
   ```bash
