@@ -448,7 +448,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
   ```text
   IMAGE          ID             DISK USAGE   CONTENT SIZE  
-  scale-sim:v3   xxxxxxxxxxxx   xxxMB        xxxMB
+  scale-sim:v3   xxxxxxxxxxxx        xxxGB          xxxMB
   ```
 
 <br>
