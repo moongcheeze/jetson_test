@@ -12,7 +12,7 @@
 <p>
 본 레포지토리는 Jetson Orin Nano 보드를 이용해 쿠버네티스 클러스터를 구성하는 과정을 설명합니다.<br>
 이후 노드 간 컨테이너 이미지 공유를 위한 로컬 레지스트리 구축과 실행 결과 저장을 위한 NFS 설정 과정을 정리합니다.<br>
-마지막으로 구성한 클러스터 위에서 실행가능한 예제(SCALE-Sim v3 이용)를 제공합니다.
+마지막으로 구성한 클러스터 위에서 실행 가능한 예제(SCALE-Sim v3 이용)를 제공합니다.
 </p>
 </div>
 <br>
@@ -375,7 +375,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 <br>
 
 ### (6) 쿠버네티스 동작 확인
-> 아래 과정은 마스터 노드에서 수행해야 합니다.
+> 아래 과정은 마스터 노드에서 수행합니다.
 
 - 본 repository를 clone합니다.
 
@@ -419,6 +419,37 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
 
 ## 📦 STEP 2. 로컬 레지스트리 생성
+
+### (1) 이미지 생성
+> 아래 과정은 마스터 노드에서 수행합니다.
+
+- 본 레포지토리에서는 [SCALE-Sim v3](https://github.com/scalesim-project/SCALE-Sim)를 컨테이너화하여 사용합니다.  
+  이를 위해 `SCALE-Sim` 폴더 안에 Dockerfile을 작성해 두었습니다.
+
+- `SCALE-Sim` 폴더로 이동합니다.
+
+  ```bash
+  cd SCALE-Sim
+  ```
+
+- Dockerfile을 사용하여 SCALE-Sim 이미지를 빌드합니다.
+
+  ```bash
+  docker build -t scale-sim:v3 .
+  ```
+
+- 이미지가 정상적으로 생성되었는지 확인합니다.
+
+  ```bash
+  docker images
+  ```
+
+- 출력 목록에 `scale-sim:v3` 이미지가 보이면 정상적으로 빌드된 것입니다.
+
+  ```text
+  IMAGE          ID             DISK USAGE   CONTENT SIZE   EXTRA
+  scale-sim:v3   xxxxxxxxxxxx   xxxMB        xxxMB
+  ```
 
 <br>
 <br>
