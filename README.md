@@ -377,6 +377,12 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 ### (6) 쿠버네티스 동작 확인
 > 아래 과정은 Master 노드에서 수행합니다.
 
+- 본 repository를 clone합니다.
+
+  ```bash
+  git clone https://github.com/ewha-myungkukyoon/jetson-cluster.git
+  ```
+
 - `jetson-ex.yaml` 파일은 클러스터 동작 확인을 위한 4개의 Pod를 생성합니다.  
   이를 통해 앞에서 생성한 클러스터에서 Pod가 정상적으로 실행되고 Worker 노드에 분배되는지 확인합니다.
 
