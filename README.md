@@ -447,7 +447,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 - 출력 목록에 `scale-sim:v3` 이미지가 보이면 정상적으로 빌드된 것입니다.
 
   ```text
-  IMAGE          ID             DISK USAGE   CONTENT SIZE   EXTRA
+  IMAGE          ID             DISK USAGE   CONTENT SIZE  
   scale-sim:v3   xxxxxxxxxxxx   xxxMB        xxxMB
   ```
 
