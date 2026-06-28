@@ -372,6 +372,8 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   Taints: node-role.kubernetes.io/control-plane:NoSchedule
   ```
 
+<br>
+
 ### (6) 쿠버네티스 동작 확인
 > 아래 과정은 Master 노드에서 수행합니다.
 
@@ -406,10 +408,9 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 - 본 실험 환경에서는 Master 노드에 `NoSchedule` taint를 설정했기 때문에, Pod가 Master 노드가 아닌 Worker 노드에만 배치됩니다.
 
 
-
-
 <br>
 <br>
+
 
 ## 📦 STEP 2. 로컬 레지스트리 생성
 
