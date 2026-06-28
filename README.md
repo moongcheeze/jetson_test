@@ -352,9 +352,9 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   kubectl get nodes
   ```
 
-- **(Master)** k3s에서는 별도 설정이 없으면 Master 노드에도 Pod가 스케줄링될 수 있습니다.  
-  본 실험 환경에서는 Master 노드를 클러스터 관리 용도로만 사용하고, 실제 Pod는 Worker 노드에서만 실행되도록 설정합니다.  
-  Master 노드에서 아래 명령어를 실행하여 Master 노드에 `NoSchedule` taint를 추가합니다.
+- **(Master)** k3s에서는 별도 설정이 없으면 마스터 노드에도 Pod가 스케줄링될 수 있습니다.  
+  본 실험 환경에서는 마스터 노드를 클러스터 관리 용도로만 사용하고, 실제 Pod는 워커 노드에서만 실행되도록 설정합니다.  
+  마스터 노드에서 아래 명령어를 실행하여 `NoSchedule` taint를 추가합니다.
 
   ```bash
   kubectl taint nodes master node-role.kubernetes.io/control-plane=:NoSchedule
@@ -371,6 +371,41 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   ```text
   Taints: node-role.kubernetes.io/control-plane:NoSchedule
   ```
+
+### (6) 쿠버네티스 동작 확인
+> 아래 과정은 Master 노드에서 수행합니다.
+
+- `jetson-ex.yaml` 파일은 클러스터 동작 확인을 위한 4개의 Pod를 생성합니다.  
+  이를 통해 앞에서 생성한 클러스터에서 Pod가 정상적으로 실행되고 Worker 노드에 분배되는지 확인합니다.
+
+- `jetson-ex.yaml` 파일을 실행합니다.
+
+  ```bash
+  kubectl apply -f jetson-ex.yaml
+  ```
+
+- Pod가 정상적으로 생성되었는지 확인합니다.
+
+  ```bash
+  kubectl get pod -o wide
+  ```
+
+- 출력 예시는 다음과 같습니다.
+
+  ```text
+  NAME                        READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+  example-76b45bdf56-cgn2p    1/1     Running   0          20s   10.42.2.30   worker-1   <none>           <none>
+  example-76b45bdf56-kbhxc    1/1     Running   0          20s   10.42.3.25   worker-2   <none>           <none>
+  example-76b45bdf56-snp49    1/1     Running   0          20s   10.42.3.26   worker-2   <none>           <none>
+  example-76b45bdf56-vjkhc    1/1     Running   0          20s   10.42.2.29   worker-1   <none>           <none>
+  ```
+
+- `STATUS`가 `Running`이면 Pod가 정상적으로 실행 중인 상태입니다.  
+  또한 `NODE` 항목에서 Pod들이 `worker-1`, `worker-2`에 분배되어 있으면 Worker 노드에서 Pod가 정상적으로 실행되고 있는 것입니다.
+
+- 본 실험 환경에서는 Master 노드에 `NoSchedule` taint를 설정했기 때문에, Pod가 Master 노드가 아닌 Worker 노드에만 배치됩니다.
+
+
 
 
 <br>
