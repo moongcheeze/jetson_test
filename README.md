@@ -452,6 +452,39 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   ```
 
 <br>
+
+### (2) 로컬 레지스트리 생성
+> 이 과정은 마스터 노드에서 수행합니다.
+
+- 로컬 레지스트리는 클러스터 내부에서 사용할 이미지를 저장하고 공유하기 위한 개인 이미지 저장소입니다.  
+  본 실험에서는 마스터 노드에 로컬 레지스트리를 생성하여 `scale-sim:v3` 이미지를 워커 노드에서도 사용할 수 있도록 설정합니다.
+
+- 로컬 레지스트리 컨테이너를 실행합니다.
+
+  ```bash
+  docker run -d -p 5000:5000 --restart=always --name registry registry:2
+  ```
+
+- 로컬 레지스트리 컨테이너가 정상적으로 실행 중인지 확인합니다.
+
+  ```bash
+  docker ps
+  ```
+
+- 출력 예시는 다음과 같습니다.
+
+  ```text
+  CONTAINER ID   IMAGE        COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+  56a205959e05   registry:2   "/entrypoint.sh /etc…"   6 seconds ago    Up 5 seconds    0.0.0.0:5000->5000/tcp, :::5000->5000/tcp   registry
+  ```
+
+- 앞에서 생성한 `scale-sim:v3` 이미지에 로컬 레지스트리 주소(마스터_노드_주소:5000)를 포함한 태그를 추가합니다.
+
+  ```bash
+  docker tag scale-sim:v3 192.168.0.24:5000/scale-sim:v3
+  ```
+
+<br>
 <br>
 
 ## 🗂️ STEP 3. NFS 설정
