@@ -552,7 +552,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   {"name":"scale-sim","tags":["v3"]}
   ```
 
-- **(Worker)** 워커 노드에서 로컬 레지스트리의 이미지를 pull합니다.
+- **(Worker)** 로컬 레지스트리의 이미지를 pull합니다.
 
   ```bash
   docker pull 192.168.0.24:5000/scale-sim:v3
