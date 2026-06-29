@@ -530,6 +530,49 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   ```
 
 <br>
+
+### (4) 이미지 push & pull
+> 아래 과정은 마스터/워커 노드별로 구분하여 수행됩니다.
+
+- **(Master)** 로컬 레지스트리에 이미지를 push합니다.
+
+  ```bash
+  docker push 192.168.0.24:5000/scale-sim:v3
+  ```
+
+  이미지가 로컬 레지스트리에 정상적으로 push되었는지 확인합니다.
+
+  ```bash
+  curl http://192.168.0.24:5000/v2/scale-sim/tags/list
+  ```
+
+  출력 결과에 `scale-sim` 이미지와 `v3` 태그가 보이면 정상적으로 push된 것입니다.
+
+  ```text
+  {"name":"scale-sim","tags":["v3"]}
+  ```
+
+- **(Worker)** 워커 노드에서 로컬 레지스트리의 이미지를 pull합니다.
+
+  ```bash
+  docker pull 192.168.0.24:5000/scale-sim:v3
+  ```
+
+  이미지가 정상적으로 pull되었는지 확인합니다.
+
+  ```bash
+  docker images 192.168.0.24:5000/scale-sim:v3
+  ```
+
+  출력 예시는 다음과 같습니다.
+
+  ```text
+  REPOSITORY                    TAG       IMAGE ID       CREATED        SIZE
+  192.168.0.24:5000/scale-sim   v3        ...            ...            ...
+  ```
+
+
+<br>
 <br>
 
 ## 🗂️ STEP 3. NFS 설정
