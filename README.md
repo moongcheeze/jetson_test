@@ -457,7 +457,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 > 아래 과정은 마스터 노드에서 수행합니다.
 
 - 로컬 레지스트리는 클러스터 내부에서 사용할 이미지를 저장하고 공유하기 위한 개인 이미지 저장소입니다.  
-  본 실험에서는 마스터 노드에 로컬 레지스트리를 생성하여 `scale-sim:v3` 이미지를 워커 노드에서도 사용할 수 있도록 설정합니다.
+  마스터 노드에 로컬 레지스트리를 생성하여 `scale-sim:v3` 이미지를 워커 노드에서 사용하려고 합니다.
 
 - 로컬 레지스트리 컨테이너를 실행합니다.
 
@@ -482,6 +482,59 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
   ```bash
   docker tag scale-sim:v3 192.168.0.24:5000/scale-sim:v3
+  ```
+
+<br>
+
+### (3) 도커 insecure-registries 설정
+> 아래 과정은 모든 Jetson 보드에서 동일하게 수행됩니다.
+
+- 로컬 레지스트리는 마스터 노드에서 실행되므로, 각 Jetson 보드의 도커 설정 파일에 **로컬 레지스트리 주소**를 `insecure-registries`로 등록합니다.
+
+  로컬 레지스트리 주소는 다음 형식으로 작성합니다.
+
+  ```text
+  <Master Node IP>:<Registry Port>
+  ```
+
+  예를 들어 마스터 노드의 IP가 `192.168.0.24`이고, 로컬 레지스트리를 `5000`번 포트로 실행한 경우에는 다음과 같이 설정합니다.
+
+  ```bash
+  sudo vi /etc/docker/daemon.json
+  ```
+
+  `daemon.json` 파일을 다음과 같이 수정합니다.
+
+  ```json
+  {
+    "default-runtime": "nvidia",
+    "runtimes": {
+      "nvidia": {
+        "args": [],
+        "path": "nvidia-container-runtime"
+      }
+    },
+    "insecure-registries": ["192.168.0.24:5000"]
+  }
+  ```
+
+- 설정 변경 후 Docker를 재시작합니다.
+
+  ```bash
+  sudo systemctl restart docker
+  ```
+
+- `insecure-registries` 설정이 정상적으로 적용되었는지 확인합니다.
+
+  ```bash
+  docker info | grep -A 5 "Insecure Registries"
+  ```
+
+  출력에 설정한 로컬 레지스트리 주소가 포함되어 있으면 정상적으로 등록된 것입니다.
+
+  ```text
+  Insecure Registries:
+    192.168.0.24:5000
   ```
 
 <br>
