@@ -489,15 +489,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 ### (3) 도커 insecure-registries 설정
 > 아래 과정은 모든 Jetson 보드에서 동일하게 수행됩니다.
 
-- 로컬 레지스트리는 마스터 노드에서 실행되므로, 각 Jetson 보드의 도커 설정 파일에 **로컬 레지스트리 주소**를 `insecure-registries`로 등록합니다.
-
-  로컬 레지스트리 주소는 다음 형식으로 작성합니다.
-
-  ```text
-  <Master Node IP>:<Registry Port>
-  ```
-
-  예를 들어 마스터 노드의 IP가 `192.168.0.24`이고, 로컬 레지스트리를 `5000`번 포트로 실행한 경우에는 다음과 같이 설정합니다.
+- 로컬 레지스트리는 마스터 노드에서 실행되므로, 각 Jetson 보드의 도커 설정 파일에 **로컬 레지스트리 주소(마스터_노드_주소:5000)**를 `insecure-registries`로 등록합니다.
 
   ```bash
   sudo vi /etc/docker/daemon.json
