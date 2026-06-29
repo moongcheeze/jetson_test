@@ -409,7 +409,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   ```
 
 - `STATUS`가 `Running`이면 Pod가 정상적으로 실행 중인 상태입니다.  
-  또한 `NODE` 항목에서 Pod들이 `worker-1`, `worker-2`에 분배되어 있으면 워커 노드에서 Pod가 정상적으로 실행되고 있는 것입니다.
+  또한 Pod들이 `worker-1`, `worker-2`에 분배되어 있는 것을 확인할 수 있습니다.
 
 - 본 실험 환경에서는 마스터 노드에 `NoSchedule` taint를 설정했기 때문에, Pod가 마스터 노드가 아닌 워커 노드에만 배치됩니다.
 
