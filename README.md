@@ -577,6 +577,103 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
 ## 🗂️ STEP 3. NFS 설정
 
+```text
+Persistent Volume(PV)은 Pod와 별도의 lifecycle을 가지는 쿠버네티스 저장소 리소스입니다.
+
+본 실험 환경에서는 NFS를 사용하여 마스터 노드의 디렉터리를 공유 저장소로 구성합니다.
+이를 통해 여러 워커 노드의 Pod가 동일한 저장소에 실행 결과를 저장하게 됩니다.
+```
+
+### (1) NFS 서버 세팅
+> 아래 과정은 마스터 노드에서 수행합니다.
+
+
+- NFS 서버를 설치합니다.
+
+  ```bash
+  sudo apt-get update
+  sudo apt-get install nfs-common nfs-kernel-server -y
+  ```
+  
+- 공유할 디렉터리를 생성하고 권한을 설정합니다.
+
+  아래 명령어의 `/data/nfs/results`는 예시 경로입니다.  
+  본인 환경에서 공유 저장소로 사용할 디렉터리 경로로 변경해서 사용합니다.
+
+  ```bash
+  sudo mkdir -p /data/nfs/results
+  sudo chown nobody:nogroup /data/nfs/results
+  sudo chmod g+rwxs /data/nfs/results
+  ```
+
+- NFS로 공유할 디렉터리와 접근 가능한 네트워크 대역을 `/etc/exports`에 등록합니다.
+
+  아래 명령어의 `/data/nfs/results`는 공유할 디렉터리 경로이고,  
+  `192.168.0.0/24`는 접근을 허용할 네트워크 대역입니다.
+
+  본인 환경의 공유 디렉터리 경로와 Jetson 보드들이 포함된 네트워크 대역에 맞게 수정합니다.
+
+  ```bash
+  echo -e "/data/nfs/results\t192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+  ```
+
+- 변경된 export 설정을 적용합니다.
+
+  ```bash
+  sudo exportfs -av
+  ```
+
+- 현재 NFS export 설정을 확인합니다.
+
+  ```bash
+  cat /etc/exports
+  ```
+
+  출력 결과에 공유 디렉터리 설정이 포함되어 있으면 정상적으로 등록된 것입니다.
+
+  ```text
+  /data/nfs/results 192.168.0.0/24(rw,sync,no_subtree_check,no_root_squash)
+  ```
+
+- NFS 서비스를 재시작하고 상태를 확인합니다.
+
+  ```bash
+  sudo systemctl restart nfs-kernel-server
+  sudo systemctl status nfs-kernel-server
+  ```
+
+
+### (2) NFS 클라이언트 세팅
+> 아래 과정은 NFS를 사용할 모든 워커 노드에서 수행합니다.
+
+- 여러 노드에서 NFS 공유 디렉터리를 사용할 수 있도록 NFS 클라이언트 패키지를 설치합니다.
+
+  ```bash
+  sudo apt-get update
+  sudo apt install nfs-common -y
+  ```
+
+- 마스터 노드의 NFS 공유 디렉터리에 접근 가능한지 확인합니다.
+
+  아래 명령어의 `192.168.0.24`는 마스터 노드의 IP 주소입니다.  
+  본인 환경의 마스터 노드 IP에 맞게 수정합니다.
+
+  ```bash
+  showmount -e 192.168.0.24
+  ```
+
+  출력 결과에 Master Node에서 export한 공유 디렉터리와 접근 가능한 네트워크 대역이 표시되면 정상입니다.
+
+  ```text
+  Export list for 192.168.0.24:
+  /data/nfs/results 192.168.0.0/24
+  ```
+
+
+
+
+
+
 <br>
 <br>
 
