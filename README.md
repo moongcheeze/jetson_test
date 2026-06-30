@@ -639,6 +639,8 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   sudo systemctl status nfs-kernel-server
   ```
 
+<br>
+
 
 ### (2) NFS 클라이언트 세팅
 > 아래 과정은 NFS를 사용할 모든 워커 노드에서 수행합니다.
