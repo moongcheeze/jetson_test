@@ -680,7 +680,6 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
     width="600"
     alt="pv/pvc"
     src="https://github.com/user-attachments/assets/098dbc17-73ac-4cd3-800d-7998910d236d"
-    style="margin: 24px 0;"
   />
 </p>
 
