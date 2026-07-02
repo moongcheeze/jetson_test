@@ -749,7 +749,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 
 <br>
   
-### (2) pod 적용
+### (2) pod 실행
 > 아래 과정은 마스터 노드에서 수행합니다.
 
 - `SCALE-Sim` 폴더 안에 Pod 생성을 위한 YAML 파일 3개를 작성해 두었습니다.
@@ -820,6 +820,4 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   ```text
   /data/nfs/results
   ```
-
-<br>
 <br>
