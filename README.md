@@ -697,6 +697,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   PVC는 해당 PV를 요청하여 Pod가 사용할 수 있도록 연결합니다.  
   Pod는 PVC를 volume으로 mount하여 실행 결과를 NFS 공유 디렉터리에 저장합니다.
 
+<br>
 
 ### (1) PV/PVC 적용
 > 아래 과정은 마스터 노드에서 수행합니다.
@@ -751,8 +752,74 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 ### (2) pod 적용
 > 아래 과정은 마스터 노드에서 수행합니다.
 
+- `SCALE-Sim` 폴더 안에 Pod 생성을 위한 YAML 파일 3개를 작성해 두었습니다.
 
+  ```text
+  kube_test01.yaml
+  kube_test02.yaml
+  kube_test03.yaml
+  ```
 
+- 각 YAML 파일은 서로 다른 실행 인자를 사용하여 SCALE-Sim을 실행합니다.
+
+  ```yaml
+  args:
+    - -c
+    - /app/configs/t1.cfg
+    - -t
+    - /app/topologies/conv.csv
+    - -p
+    - /app/results
+  ```
+
+  위 `args`는 SCALE-Sim 실행 시 전달되는 인자입니다.  
+  원하는 실험 설정에 맞게 config 파일, topology 파일, 결과 저장 경로 등을 수정하여 사용합니다.
+
+- 각 YAML 파일의 `metadata.name`은 서로 다르게 설정해야 합니다.
+
+  ```yaml
+  metadata:
+    name: scale-sim-job-t1
+  ```
+
+  동일한 이름을 사용하면 Job 이름이 중복되어 실행에 문제가 발생할 수 있습니다.
+
+- YAML 파일을 적용합니다.
+
+  ```bash
+  kubectl apply -f kube_test01.yaml
+  kubectl apply -f kube_test02.yaml
+  kubectl apply -f kube_test03.yaml
+  ```
+
+- Pod가 정상적으로 생성되고 실행되는지 확인합니다.
+
+  ```bash
+  kubectl get pods -o wide
+  ```
+
+- 작업이 완료되었는지 확인합니다.
+
+  ```bash
+  kubectl get jobs
+  ```
+
+- 시뮬레이터 실행 결과는 YAML 파일의 `args`에서 `-p` 옵션으로 지정한 경로에 저장됩니다.
+
+  ```yaml
+  args:
+    - -p
+    - /app/results
+  ```
+
+  여기서 `/app/results`는 Pod 내부의 결과 저장 경로입니다.  
+  해당 경로는 PVC를 통해 NFS 공유 디렉터리와 연결되어 있습니다.
+
+  따라서 실제 결과 파일은 마스터 노드에서 NFS로 공유한 디렉터리에 저장됩니다.
+
+  ```text
+  /data/nfs/results
+  ```
 
 <br>
 <br>
