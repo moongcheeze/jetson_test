@@ -692,7 +692,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
   </sub>
 </p>
 
-- 본 단계에서는 NFS 기반 PV/PVC를 사용하여 SCALE-Sim Pod의 실행 결과를 공유 저장소에 저장합니다.
+- NFS 기반 PV/PVC를 사용하여 SCALE-Sim Pod의 실행 결과를 공유 저장소에 저장합니다.
 - PV는 NFS 공유 디렉터리를 쿠버네티스 저장소 리소스로 정의합니다.  
   PVC는 해당 PV를 요청하여 Pod가 사용할 수 있도록 연결합니다.  
   Pod는 PVC를 volume으로 mount하여 실행 결과를 NFS 공유 디렉터리에 저장합니다.
