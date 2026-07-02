@@ -578,12 +578,10 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 ## 🗂️ STEP 3. NFS 설정
 
 > Persistent Volume(PV)은 Pod와 별도의 lifecycle을 가지는 쿠버네티스 저장소 리소스입니다.  
-> 본 실험 환경에서는 NFS를 기반으로 PV를 구성하여,마스터 노드의 디렉터리를 여러 워커 노드의 Pod가 함께 사용하는 공유 저장소로 제공합니다.
-
+> 본 실험 환경에서는 NFS를 기반으로 마스터 노드에 PV를 생성하여,여러 워커 노드가 해당 저장소에 접근 가능하도록 구성했습니다.
 
 ### (1) NFS 서버 세팅
 > 아래 과정은 마스터 노드에서 수행합니다.
-
 
 - NFS 서버를 설치합니다.
 
@@ -677,6 +675,75 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 <br>
 
 ## 🚀 STEP 4. 실행 예제
+
+<img
+  width="600"
+  alt="pv/pvc"
+  src="https://github.com/user-attachments/assets/098dbc17-73ac-4cd3-800d-7998910d236d"
+  style="margin: 24px 0;"
+/>
+
+- 본 단계에서는 NFS 기반 PV/PVC를 사용하여 SCALE-Sim Pod의 실행 결과를 공유 저장소에 저장합니다.
+- PV는 NFS 공유 디렉터리를 쿠버네티스 저장소 리소스로 정의합니다.  
+  PVC는 해당 PV를 요청하여 Pod가 사용할 수 있도록 연결합니다.  
+  Pod는 PVC를 volume으로 mount하여 실행 결과를 NFS 공유 디렉터리에 저장합니다.
+
+
+### (1) PV/PVC 적용
+> 아래 과정은 마스터 노드에서 수행합니다.
+
+- `SCALE-Sim` 폴더 안에 PV/PVC 설정 파일을 작성해 두었습니다.
+
+  ```text
+  scale_pv.yaml
+  scale_pvc.yaml
+  ```
+
+- `SCALE-Sim` 폴더로 이동합니다.
+
+  ```bash
+  cd SCALE-Sim
+  ```
+
+- `scale_pv.yaml` 파일에서 NFS 서버 정보와 공유 디렉터리 경로를 확인합니다.
+
+  ```yaml
+  nfs:
+    server: 192.168.0.24
+    path: /data/nfs/results
+  ```
+  
+  본인 환경에 맞게 `server`와 `path` 값을 수정합니다.  
+  `server`에는 NFS 서버로 사용할 마스터 노드의 IP 주소를 입력합니다.  
+  `path`에는 마스터 노드에서 NFS로 공유한 디렉터리 경로를 입력합니다.
+
+
+- PV를 적용합니다.
+
+  ```bash
+  kubectl apply -f scale_pv.yaml
+  ```
+
+- PVC를 적용합니다.
+
+  ```bash
+  kubectl apply -f scale_pvc.yaml
+  ```
+
+- PV와 PVC가 정상적으로 연결되었는지 확인합니다.
+
+  ```bash
+  kubectl get pv
+  kubectl get pvc
+  ```
+
+<br>
+  
+### (2) pod 적용
+> 아래 과정은 마스터 노드에서 수행합니다.
+
+
+
 
 <br>
 <br>
