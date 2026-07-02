@@ -3,7 +3,7 @@
 <h1>쿠버네티스 기반 Jetson 클러스터 구축 및 실행 가이드</h1>
 
 <img
-  width="450"
+  width="600"
   alt="Jetson cluster architecture"
   src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef"
   style="margin: 24px 0;"
@@ -677,7 +677,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
 ## 🚀 STEP 4. 실행 예제
 <p align="center">
   <img
-    width="600"
+    width="450"
     alt="pv/pvc"
     src="https://github.com/user-attachments/assets/098dbc17-73ac-4cd3-800d-7998910d236d"
   />
@@ -691,6 +691,7 @@ Jetson Orin Nano 보드 3대와 스위치를 이용하여 클러스터를 구성
     </a>
   </sub>
 </p>
+
 - 본 단계에서는 NFS 기반 PV/PVC를 사용하여 SCALE-Sim Pod의 실행 결과를 공유 저장소에 저장합니다.
 - PV는 NFS 공유 디렉터리를 쿠버네티스 저장소 리소스로 정의합니다.  
   PVC는 해당 PV를 요청하여 Pod가 사용할 수 있도록 연결합니다.  
