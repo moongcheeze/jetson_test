@@ -3,7 +3,7 @@
 <h1>쿠버네티스 기반 Jetson 클러스터 구축 및 실행 가이드</h1>
 
 <img
-  width="600"
+  width="450"
   alt="Jetson cluster architecture"
   src="https://github.com/user-attachments/assets/4baa5a25-5095-40fa-a78d-d02b2e6a6fef"
   style="margin: 24px 0;"
